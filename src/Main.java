@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -95,6 +96,30 @@ public static void First() {
 }
 public static void Second() {
 
+    Scanner s = new Scanner(System.in);
+
+    System.out.print("Input n please: ");
+    int n = s.nextInt();
+
+    int[] array = new int[n];
+
+    System.out.println("Input elements of array: ");
+    for (int i = 0; i < n; i++) {
+        array[i] = s.nextInt();
+    }
+
+    System.out.print("Input k: ");
+    int k = s.nextInt();
+
+    for (int i = 0; i < k; i++) {
+        int temp = array[array.length - 1 - i];
+        for (int j = array.length - 1; j > i; j--) {
+            array[j] = array[j - 1];
+        }
+        array[i] = temp;
+    }
+
+    System.out.println(Arrays.toString(array));
 }
 public static void Third(){
 
