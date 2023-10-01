@@ -122,6 +122,31 @@ public static void Second() {
     System.out.println(Arrays.toString(array));
 }
 public static void Third(){
+    Scanner s = new Scanner(System.in);
+
+        System.out.print("Input n: ");
+        int n = s.nextInt();
+
+        double[][] array = new double[n][n];
+
+        System.out.println("input elements of matrix: ");
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                array[i][j] = s.nextDouble();
+            }
+        }
+
+        double sum = 0;
+        for (int i = 0; i < n; i++) {
+            sum += array[i][i];
+        }
+
+        if (sum > 0) {
+            System.out.println("sum: " + sum);
+        } else {
+            System.out.println("У матриці немає елементів, які перевищують за величиною всі елементи, розміщені нижче головної діагоналі.");
+        }
+    
 
 }
 public static void Fourth() {
