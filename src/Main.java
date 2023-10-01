@@ -30,6 +30,7 @@ public class Main {
             break;
         }
     }
+    s.close();
     }
 
 
@@ -93,6 +94,7 @@ public static void First() {
             break;
         }
     }
+    s.close();
 }
 public static void Second() {
 
@@ -120,34 +122,30 @@ public static void Second() {
     }
 
     System.out.println(Arrays.toString(array));
+    s.close();
 }
 public static void Third(){
-    Scanner scanner = new Scanner(System.in);
+    Scanner s = new Scanner(System.in);
 
-        // Просимо користувача ввести розмір матриці.
         System.out.print("Input n: ");
-        int n = scanner.nextInt();
+        int n = s.nextInt();
 
-        // Створюємо масив з дійсними числами.
         double[][] array = new double[n][n];
 
-        // Просимо користувача ввести елементи масиву.
         System.out.println("Input elements of array: ");
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 System.out.print("A["+ i + "][" + j +"]=");
-                array[i][j] = scanner.nextDouble();
+                array[i][j] = s.nextDouble();
             }
         }
 
-        // Знаходимо суму елементів головної діагоналі.
         double sumOfMainDiagonal = 0;
         for (int i = 0; i < n; i++) {
             sumOfMainDiagonal += array[i][i];
         }
 
-        // Знаходимо суму елементів вище головної діагоналі, які перевищують за величиною всі елементи, розміщені нижче головної діагоналі.
-        double sumOfUpperDiagonal = 0;
+         double sumOfUpperDiagonal = 0;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < i; j++) {
                 if (array[i][j] > array[j][i]) {
@@ -165,11 +163,26 @@ public static void Third(){
         } else {
             System.out.println("errorchik.");
         }
+        s.close();
     }
 
 
 public static void Fourth() {
-
+    Scanner s = new Scanner(System.in);
+    System.out.println("Input text:");
+    String text = s.nextLine();
+    String[] words = text.split("[ ,.:;-?!]+");
+    for (int i = 0; i < words.length; i++) {
+        if (words[i].length() % 2 == 1) {
+            words[i] = "";
+        }
+    }
+    String newText = "";
+    for (String word : words) {
+        newText += word + " ";
+    }
+    System.out.println("new text: " + newText);
+    s.close();
+    }
 }
 
-}
