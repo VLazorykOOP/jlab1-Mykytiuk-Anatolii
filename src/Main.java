@@ -122,33 +122,52 @@ public static void Second() {
     System.out.println(Arrays.toString(array));
 }
 public static void Third(){
-    Scanner s = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in);
 
+        // Просимо користувача ввести розмір матриці.
         System.out.print("Input n: ");
-        int n = s.nextInt();
+        int n = scanner.nextInt();
 
+        // Створюємо масив з дійсними числами.
         double[][] array = new double[n][n];
 
-        System.out.println("input elements of matrix: ");
+        // Просимо користувача ввести елементи масиву.
+        System.out.println("Input elements of array: ");
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                array[i][j] = s.nextDouble();
+                System.out.print("A["+ i + "][" + j +"]=");
+                array[i][j] = scanner.nextDouble();
             }
         }
 
-        double sum = 0;
+        // Знаходимо суму елементів головної діагоналі.
+        double sumOfMainDiagonal = 0;
         for (int i = 0; i < n; i++) {
-            sum += array[i][i];
+            sumOfMainDiagonal += array[i][i];
         }
 
-        if (sum > 0) {
-            System.out.println("sum: " + sum);
+        // Знаходимо суму елементів вище головної діагоналі, які перевищують за величиною всі елементи, розміщені нижче головної діагоналі.
+        double sumOfUpperDiagonal = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < i; j++) {
+                if (array[i][j] > array[j][i]) {
+                    sumOfUpperDiagonal += array[i][j];
+                }
+            }
+        }
+        double result = sumOfMainDiagonal + sumOfUpperDiagonal;
+
+        // Виводимо результати.
+        if (sumOfUpperDiagonal > 0) {
+            System.out.println("summ on main diagonal: " + sumOfMainDiagonal);
+            System.out.println("summ under main diagonal: " + sumOfUpperDiagonal);
+            System.out.println("result:" + result);
         } else {
-            System.out.println("У матриці немає елементів, які перевищують за величиною всі елементи, розміщені нижче головної діагоналі.");
+            System.out.println("errorchik.");
         }
-    
+    }
 
-}
+
 public static void Fourth() {
 
 }
